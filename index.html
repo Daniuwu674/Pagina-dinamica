@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Currículum</title>
+    <style>
+        .seccion { display: none; }
+        .active { display: block; }
+    </style>
+</head>
+<body>
+    <h1>Formulario de Currículum</h1>
+    
+    <form id="formulario" action="guardar_curriculum.php" method="POST">
+        <!-- Sección de experiencia laboral -->
+        <div class="seccion active" id="experiencia">
+            <h2>Experiencia Laboral</h2>
+            <label for="empresa">Empresa:</label>
+            <input type="text" id="empresa" name="empresa" required><br><br>
+
+            <label for="puesto">Puesto:</label>
+            <input type="text" id="puesto" name="puesto" required><br><br>
+
+            <label for="fecha_inicio_exp">Fecha de Inicio:</label>
+            <input type="date" id="fecha_inicio_exp" name="fecha_inicio_exp" required><br><br>
+
+            <label for="fecha_fin_exp">Fecha de Fin:</label>
+            <input type="date" id="fecha_fin_exp" name="fecha_fin_exp" required><br><br>
+
+            <label for="descripcion_exp">Descripción:</label><br>
+            <textarea id="descripcion_exp" name="descripcion_exp" rows="4" cols="50"></textarea><br><br>
+
+            <button type="button" onclick="mostrarSiguiente('formacion')">Siguiente</button>
+        </div>
+
+        <!-- Sección de formación -->
+        <div class="seccion" id="formacion">
+            <h2>Formación</h2>
+            <label for="institucion">Institución:</label>
+            <input type="text" id="institucion" name="institucion" required><br><br>
+
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required><br><br>
+
+            <label for="fecha_inicio_edu">Fecha de Inicio:</label>
+            <input type="date" id="fecha_inicio_edu" name="fecha_inicio_edu" required><br><br>
+
+            <label for="fecha_fin_edu">Fecha de Fin:</label>
+            <input type="date" id="fecha_fin_edu" name="fecha_fin_edu" required><br><br>
+
+            <button type="button" onclick="mostrarSiguiente('idiomas')">Siguiente</button>
+        </div>
+
+        <!-- Sección de idiomas -->
+        <div class="seccion" id="idiomas">
+            <h2>Idiomas</h2>
+            <label for="idioma">Idioma:</label>
+            <select id="idioma" name="idioma" required>
+                <option value="espanol">Español</option>
+                <option value="ingles">Inglés</option>
+                <option value="frances">Francés</option>
+                <option value="aleman">Alemán</option>
+            </select><br><br>
+
+            <label for="nivel_idioma">Nivel:</label>
+            <select id="nivel_idioma" name="nivel_idioma" required>
+                <option value="basico">Básico</option>
+                <option value="intermedio">Intermedio</option>
+                <option value="avanzado">Avanzado</option>
+                <option value="nativo">Nativo</option>
+            </select><br><br>
+
+            <button type="button" onclick="mostrarSiguiente('habilidades')">Siguiente</button>
+        </div>
+
+        <!-- Sección de habilidades -->
+        <div class="seccion" id="habilidades">
+            <h2>Aptitudes y Habilidades</h2>
+            <label for="habilidad">Habilidad:</label>
+            <input type="text" id="habilidad" name="habilidad" required><br><br>
+
+            <label for="nivel_habilidad">Nivel (1-10):</label>
+            <input type="number" id="nivel_habilidad" name="nivel_habilidad" min="1" max="10" required><br><br>
+
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <script>
+        function mostrarSiguiente(seccionID) {
+            // Ocultar todas las secciones
+            let secciones = document.querySelectorAll('.seccion');
+            secciones.forEach(function(seccion) {
+                seccion.classList.remove('active');
+            });
+            // Mostrar la siguiente sección
+            document.getElementById(seccionID).classList.add('active');
+        }
+    </script>
+</body>
+</html>

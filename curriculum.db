@@ -1,0 +1,32 @@
+CREATE TABLE usuario(
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    direccion TEXT,
+    email TEXT,
+    telefono TEXT
+);
+
+CREATE TABLE experiencia_laboral(
+    id_experiencia INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER,
+    empresa TEXT NOT NULL,
+    puesto TEXT NOT NULL,
+    descripcion TEXT,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+CREATE TABLE habilidades(
+    id_habilidad INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER,
+    habilidad TEXT NOT NULL,
+    nivel INTEGER,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+CREATE TABLE idiomas(
+    id_idioma INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER,
+    idioma TEXT NOT NULL,
+    nivel TEXT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+)
